@@ -1,0 +1,34 @@
+niche: "tech reviews"
+
+fetcher:
+  sources:
+    - type: rss
+      url: "https://example.com/feed"
+    - type: folder
+      path: "videos/raw"
+    - type: youtube_channel
+      channel_url: "https://www.youtube.com/channel/XXXX"
+      max_videos: 2
+  max_workers: 3
+
+clipper:
+  output_dir: "videos/clips"
+  scene_detect: true
+  processes: 4
+
+editor:
+  template:
+    intro_text: "🔥 Top Moment"
+    outro_text: "Subscribe!"
+    music_path: "assets/music.mp3"
+    music_volume: 0.1
+    fps: 24
+    bitrate: "3000k"
+    output_path: "videos/final/short.mp4"
+
+uploader:
+  credentials: "client_secrets.json"
+  token: "token.json"
+  retries: 3
+
+openai_key: "sk-YOUR_OPENAI_KEY_HERE"

@@ -1,0 +1,61 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+title: YouTube Shorts Pipeline Config
+type: object
+required: [niche, fetcher, clipper, editor, uploader, openai_key]
+properties:
+  niche:
+    type: string
+
+  fetcher:
+    type: object
+    required: [sources, max_workers]
+    properties:
+      sources:
+        type: array
+        items:
+          type: object
+          required: [type]
+          properties:
+            type:
+              type: string
+              enum: [rss, folder, youtube_channel]
+            url: {type: string}
+            path: {type: string}
+            channel_url: {type: string}
+            max_videos: {type: integer}
+      max_workers: {type: integer}
+
+  clipper:
+    type: object
+    required: [output_dir]
+    properties:
+      output_dir: {type: string}
+      scene_detect: {type: boolean}
+      processes: {type: integer}
+
+  editor:
+    type: object
+    required: [template]
+    properties:
+      template:
+        type: object
+        required: [intro_text, outro_text]
+        properties:
+          intro_text: {type: string}
+          outro_text: {type: string}
+          music_path: {type: string}
+          music_volume: {type: number}
+          fps: {type: integer}
+          bitrate: {type: string}
+          output_path: {type: string}
+
+  uploader:
+    type: object
+    required: [credentials, token]
+    properties:
+      credentials: {type: string}
+      token: {type: string}
+      retries: {type: integer}
+
+  openai_key:
+    type: string
