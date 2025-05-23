@@ -1,0 +1,22 @@
+# Byte‐compiled / cache files
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+
+# Python packaging
+*.egg-info/
+
+# pytest cache
+.pytest_cache/
+
+# Credentials & tokens
+*.json
+token.json
+
+# Video outputs
+videos/
+
+# Log files
+*.log
